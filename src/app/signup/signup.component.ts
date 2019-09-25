@@ -3,24 +3,21 @@ import {user} from '../user';
 import { AppComponent } from "../app.component"
 import {  Router, Routes } from "@angular/router";
 import { HomeComponent } from '../home/home.component';
-import { from } from 'rxjs';
-
 
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  selector: 'app-signup',
+  templateUrl: './signup.component.html',
+  styleUrls: ['./signup.component.css']
 })
-export class LoginComponent implements OnInit {
+export class SignupComponent implements OnInit {
 
-  
   constructor(private router: Router ) { }
-    
-  ngOnInit() {
+  // Users = this.appc.getUsers();
 
+  ngOnInit() {
   }
 
-  login(event){
+  signup(event){
     event.preventDefault();
     const target =event.target;
     var flag=0;
@@ -28,19 +25,22 @@ export class LoginComponent implements OnInit {
     const pass=event.target.querySelector('#psw').value;
     console.log("Username: "+username+" pass: "+pass);
     AppComponent.Users.forEach(user => {
-      if(user.username==username&&user.password==pass){
-        this.router.navigate(['/home']);
+      if(user.username==username){
         flag=1;
       }
     });
-    if(flag!=1){
-      alert("Invalid username or password.");
+    if(flag==1){
+      alert("Username already taken.");
+    }else{
+      var u= {username: username, password: pass};
+      AppComponent.Users.push(u);
+      // this.appc.setUsers(this.Users);
+      this.router.navigate(['/home']);
     }
-
   }
 
-  signup(){
-    this.router.navigate(['/signup']);
+  login(){
+    this.router.navigate(['/login']);
   }
 
 }

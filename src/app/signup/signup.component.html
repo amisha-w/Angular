@@ -8,23 +8,23 @@
 
 
 
-<form (submit)="login($event)">
+<form (submit)="signup($event)">
   
 
   <div class="container">
-      <h2>Login Form</h2>
+      <h2>SignUp Form</h2>
     <label for="uname"><b>Username</b></label>
     <input type="text" placeholder="Enter Username" id="uname" name="uname" required>
 
     <label for="psw"><b>Password</b></label>
     <input type="password" placeholder="Enter Password" id="psw" name="psw" required>
         
-    <button type="submit">Login</button>
+    <button type="submit">Sign Up</button>
    
   </div>
 
   <div class="container" style="background-color:#f1f1f1">
-    <button (click)="signup()" type="button" class="cancelbtn">Sign Up</button>
+    <button (click)="login()" type="button" class="cancelbtn">Log In</button>
   </div>
 
 </form>
